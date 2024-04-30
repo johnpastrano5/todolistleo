@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 2, 
   },
   text: {
-    fontSize: 15,
+    fontSize: 14,
     color: '#666',
     textAlign: 'center',
     marginTop: 20,
