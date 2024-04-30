@@ -46,7 +46,7 @@ const App = () => {
         keyExtractor={(item, index) => index.toString()}
       />
       <Text style={styles.text}>
-        Copyright © 2024 Todo List. All Rights Reserved.
+        Copyright © 2024 Todo List. All rights reserved.
       </Text>
       <Text style={styles.text}>
         "John Leo F. Pastrano, 20211259, IT35C-IT83, App dev, BSIT, 2023-2024"
