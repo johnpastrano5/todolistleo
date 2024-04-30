@@ -20,7 +20,7 @@ const App = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={TFs} style={styles.logoheader} />
-        <Text style={styles.headerText}>Pastrano Todo List</Text>
+        <Text style={styles.headerText}>Pastrano TodoList</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
