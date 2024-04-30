@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.2)', 
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 1,
-    marginTop: 10, 
+    marginTop: 11, 
   },
   inputContainer: {
     flexDirection: 'row',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 2, 
   },
   text: {
-    fontSize: 15,
+    fontSize: 14,
     color: '#666',
     textAlign: 'center',
     marginTop: 20,
