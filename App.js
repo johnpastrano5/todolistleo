@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, Button, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { create } from 'zustand';
+import useStore from './store';
+import TodoItem from './TodoItem';
 import TFs from './assets/TFs.jpg';
-
-
-const useStore = create((set) => ({
-  todos: [],
-  addTodo: (todo) =>
-    set((state) => ({ todos: [todo, ...state.todos] })), 
-  deleteTodo: (index) =>
-    set((state) => ({ todos: state.todos.filter((_, i) => i !== index) })),
-  editTodo: (index, newText) =>
-    set((state) => ({
-      todos: state.todos.map((todo, i) => (i === index ? newText : todo)),
-    })),
-}));
 
 const App = () => {
   const [text, setText] = useState('');
@@ -32,7 +20,6 @@ const App = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={TFs} style={styles.logoheader} />
-
         <Text style={styles.headerText}>Pastrano Todo List</Text>
       </View>
       <View style={styles.inputContainer}>
@@ -49,25 +36,12 @@ const App = () => {
       <FlatList
         data={todos}
         renderItem={({ item, index }) => (
-          <View style={styles.todoItem}>
-            <Text style={styles.todoText}>{item}</Text>
-            <View style={styles.buttonsContainer}>
-              <TouchableOpacity onPress={() => deleteTodo(index)} style={styles.button}>
-                <Text style={styles.buttonText}>Delete</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  const newText = prompt('Enter new text:');
-                  if (newText !== null) {
-                    editTodo(index, newText);
-                  }
-                }}
-                style={styles.button}
-              >
-                <Text style={styles.buttonText}>Edit</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <TodoItem 
+            item={item} 
+            index={index} 
+            deleteTodo={deleteTodo} 
+            editTodo={editTodo} 
+          />
         )}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -142,52 +116,12 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 }, 
     textShadowRadius: 2, 
   },
-  todoItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    marginBottom: 10,
-    borderRadius: 20,
-    marginHorizontal: 20,
-    elevation: 3, 
-  },
-  todoText: {
-    fontSize: 16,
-    flex: 1,
-    color: '#333', 
-    textShadowColor: 'rgba(0, 0, 0, 0.2)', 
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2, 
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    marginLeft: 10,
-  },
-  button: {
-    backgroundColor: '#8A2BE2', 
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 20,
-    marginLeft: 10,
-    elevation: 3, 
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-    textShadowColor: 'rgba(0, 0, 0, 0.2)', 
-    textShadowOffset: { width: 1, height: 1 }, 
-    textShadowRadius: 2, 
-  },
   text: {
     fontSize: 14,
     color: '#666',
     textAlign: 'center',
     marginTop: 20,
-    fontWeight: 100,
+    fontWeight: '100',
   },
   logoheader: {
     width: 100, 
@@ -196,6 +130,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
 
 export default App;
