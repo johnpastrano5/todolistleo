@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, Button, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TextInput, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import useStore from './store';
 import TodoItem from './TodoItem';
 import TFs from './assets/TFs.jpg';

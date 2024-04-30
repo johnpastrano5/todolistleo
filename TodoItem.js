@@ -12,7 +12,7 @@ const TodoItem = ({ item, index, deleteTodo, editTodo }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            const newText = prompt('Enter new text:');
+            const newText = prompt('');
             if (newText !== null) {
               editTodo(index, newText);
             }
