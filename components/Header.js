@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
-import TFs from './assets/TFs.jpg';
-
+import TFs from '../assets/TFs.jpg';
 const Header = () => (
   <View style={styles.header}>
     <Image source={TFs} style={styles.logoheader} />
